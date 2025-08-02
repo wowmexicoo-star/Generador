@@ -1,16 +1,44 @@
-# Proyecto BODYCAMMX
+# 🚨 Proyecto BODYCAMMX | Generador de Enlaces y Programa de Colaboradores
 
-## Estructura de Carpetas
+Este repositorio contiene el sistema completo para invitar, registrar y activar colaboradores en el programa Bodycam México. Incluye login con Google, generador de enlaces de suscripción para YouTube, wizard educativo y formulario final.
 
-- `index.html`: Página inicial, login con Google.
-- `paso2.html` ... `paso14.html`: Cada paso del flujo del programa Bodycam México.
-- `Script.js`: Lógica JS para el generador, copiar enlaces, y validaciones.
-- `style.css`: Estilos generales.
+---
+
+## 📁 Estructura del Proyecto
+
+- `index.html`: Página principal con login, generador y navegación por secciones.
+- `script.js`: Lógica de navegación, generación de enlaces, registro y wizard.
+- `style.css`: Estilos visuales del sitio.
 - `README.md`: Este documento.
-- Otros recursos: Imágenes, logos, etc.
+- `paso2.html` ... `paso14.html`: (opcional) páginas individuales del wizard si se usan fuera del flujo integrado.
+- Recursos adicionales: imágenes, logos, formularios, endpoints.
 
-## ¿Cómo usar?
-1. Sube los archivos a tu hosting o abre cada `.html` en tu navegador.
-2. Edita los textos, links y estilos según tus necesidades.
-3. Si usas login con Google, asegúrate de reemplazar `TU_CLIENT_ID_GOOGLE` por tu client ID real.
-4. El generador de enlaces de suscripción funciona pegando tu canal y dando click en "Generar enlace".
+---
+
+## 🚀 ¿Cómo usar?
+
+1. Sube los archivos a tu hosting o abre `index.html` en tu navegador.
+2. Personaliza textos, enlaces y estilos según tu comunidad.
+3. Reemplaza el `client_id` de Google por el tuyo en el login.
+4. El generador funciona pegando tu canal y haciendo clic en “Generar enlace”.
+5. El wizard guía al usuario paso a paso hasta el formulario final.
+6. Los correos se registran automáticamente en tu hoja de Drive vía Apps Script.
+
+---
+
+## 🔗 Endpoints activos
+
+- Registro al generador:  
+  `https://script.google.com/macros/s/AKfycbxpggglfGniVnxGU3SpTXaVgttlkvSdlqn-DM_fQXjjue3cwsr1F37LpndcoZRdWtQtRg/exec`
+
+---
+
+## 📣 Créditos
+
+Creado por [BODYCAM MÉXICO](https://www.youtube.com/@BodycamFilesMx)  
+Desarrollado por Rafael Troncoso Rivera  
+Con apoyo estratégico de IA conversacional para viralización ética
+
+---
+
+¿Quieres que prepare una versión en inglés o una versión embebible para que otros creadores puedan clonarla fácilmente? También puedo ayudarte a agregar badges, licencias o instrucciones
