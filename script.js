@@ -11,12 +11,10 @@ btnContinuarGenerador?.addEventListener("click", () => {
   mostrarSeccion("seccion-generador");
 });
 
-// ✅ CORREGIDO: Enlace correcto al infoproducto
 btnShopify?.addEventListener("click", () => {
   window.open("https://o0frp0ckg3s6md71-76778012911.shopifypreview.com/products_preview?preview_key=05763684f1549d79fe4f8c4001bce1cc", "_blank");
 });
 
-// ✅ CORREGIDO: Reinicia el wizard desde la página 1
 btnProgramaBodycam?.addEventListener("click", () => {
   paginaActual = 0;
   mostrarSeccion("seccion-programa");
@@ -41,7 +39,6 @@ btnIrFormularioFinal?.addEventListener("click", () => {
   window.open("https://forms.gle/6izFAo3w5L2GU3SN8", "_blank");
 });
 
-// ✅ VALIDACIÓN Y GENERACIÓN DE ENLACE DE SUSCRIPCIÓN
 btnGenerarEnlace?.addEventListener("click", () => {
   const url = inputUrlCanal.value.trim();
   const esValido = /^https?:\/\/(www\.)?youtube\.com\/(channel|@|user)\/.+/.test(url);
@@ -74,14 +71,12 @@ function cargarPaginaWizard() {
   btnSiguienteWizard.textContent = paginaActual === wizardPaginas.length - 1 ? "Finalizar" : "Siguiente →";
 }
 
-// ✅ LOGIN CON GOOGLE: habilita botón sin depender del checkbox
+// ✅ LOGIN CON GOOGLE: redirección automática sin botón ni checkbox
 function onGoogleSignIn(response) {
   console.log("Usuario autenticado:", response);
-  btnContinuarLogin.disabled = false;
   mostrarSeccion("seccion-youtube");
 }
 
-// Variables globales necesarias
 const secciones = document.querySelectorAll("section");
 const wizardPaginas = document.querySelectorAll(".wizard-page");
 let paginaActual = 0;
