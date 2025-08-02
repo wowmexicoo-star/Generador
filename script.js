@@ -77,6 +77,7 @@ function onGoogleSignIn(response) {
   mostrarSeccion("seccion-youtube");
 }
 
+// Variables globales necesarias
 const secciones = document.querySelectorAll("section");
 const wizardPaginas = document.querySelectorAll(".wizard-page");
 let paginaActual = 0;
