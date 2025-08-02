@@ -8,9 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const wizardContent = document.getElementById("wizard-content");
   const btnAtrasWizard = document.getElementById("btnAtrasWizard");
   const btnSiguienteWizard = document.getElementById("btnSiguienteWizard");
+  const btnIrFormulario = document.getElementById("btnIrFormulario");
 
   let paginaActual = 0;
-  let correoUsuario = null; // Se guarda tras login
+  let correoUsuario = null;
 
   const wizardPaginas = [
     "¿Quieres monetizar tu contenido sin complicaciones? Únete a Bodycam México...",
@@ -29,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "Regístrate en el formulario..."
   ];
 
-  // Activar botón al iniciar sesión
   window.onGoogleSignIn = function (response) {
     const credential = response.credential;
     const payload = JSON.parse(atob(credential.split('.')[1]));
@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     registrarCorreo(correoUsuario);
   };
 
-  // Enviar correo al endpoint de Apps Script
   function registrarCorreo(email) {
     fetch("https://script.google.com/macros/s/AKfycbwJyHjIEtR2vwRb5-xSiqCaar4AK2oaL6lapolMrNF1PDdpVFnEJ6trWjC2IYwXmPOj/exec", {
       method: "POST",
@@ -63,20 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarSeccion("seccion-youtube");
   });
 
-  btnIrYoutube.addEventListener("click", () => {
+  btnIrYoutube?.addEventListener("click", () => {
     window.open("https://www.youtube.com/@BodycamFilesMx?sub_confirmation=1", "_blank");
   });
 
-  btnContinuarYoutube.addEventListener("click", () => {
+  btnContinuarYoutube?.addEventListener("click", () => {
     mostrarSeccion("seccion-generador");
   });
 
-  btnProgramaBodycam.addEventListener("click", () => {
+  btnProgramaBodycam?.addEventListener("click", () => {
     mostrarSeccion("seccion-programa");
     cargarPaginaWizard();
   });
 
-  btnSiguienteWizard.addEventListener("click", () => {
+  btnSiguienteWizard?.addEventListener("click", () => {
     if (paginaActual < wizardPaginas.length - 1) {
       paginaActual++;
       cargarPaginaWizard();
@@ -85,16 +84,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  btnAtrasWizard.addEventListener("click", () => {
+  btnAtrasWizard?.addEventListener("click", () => {
     if (paginaActual > 0) {
       paginaActual--;
       cargarPaginaWizard();
     }
   });
 
+  btnIrFormulario?.addEventListener("click", () => {
+    window.open("https://forms.gle/6izFAo3w5L2GU3SN8", "_blank");
+  });
+
   function mostrarSeccion(id) {
     secciones.forEach(sec => sec.classList.add("seccion-oculta"));
-    document.getElementById(id).classList.remove("seccion-oculta");
+    document.getElementById(id)?.classList.remove("seccion-oculta");
   }
 
   function cargarPaginaWizard() {
