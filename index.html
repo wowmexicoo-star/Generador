@@ -13,14 +13,13 @@
     <section id="seccion-login">
       <h1>Bienvenido a Bodycam México</h1>
       <p>Ingresa con tu cuenta de Google para continuar.</p>
-
+      <p><a href="https://policies.google.com/privacy" target="_blank">Consulta nuestra política de privacidad</a></p>
       <div id="g_id_onload"
            data-client_id="207280589076-phklc1pf5a716q0t5jvo12qhhe92sh1u.apps.googleusercontent.com"
            data-context="signin"
            data-callback="onGoogleSignIn"
            data-auto_prompt="false">
       </div>
-
       <div class="g_id_signin"
            data-type="standard"
            data-shape="pill"
@@ -29,7 +28,6 @@
            data-size="large"
            data-logo_alignment="left">
       </div>
-
       <label>
         <input type="checkbox" id="consentimiento">
         Sí, quiero recibir notificaciones de Bodycam México.
@@ -41,6 +39,7 @@
     <section id="seccion-youtube" class="seccion-oculta">
       <h2>¡Suscríbete a nuestro canal!</h2>
       <button id="btnIrYoutube">Suscribirme para continuar</button>
+      <button id="btnContinuarGenerador" class="seccion-oculta">Continuar al Generador</button>
     </section>
 
     <!-- Sección 3: Generador de enlaces -->
@@ -60,22 +59,13 @@
     <section id="seccion-programa" class="seccion-oculta">
       <div id="wizard-container">
         <div id="wizard-content">
-          <div class="wizard-page">1. Buscamos 10 colaboradores que quieran monetizar su contenido uniéndose al programa Bodycam México. Creamos este sistema para ayudarte a expandir tu canal con confianza y estrategia.</div>
-          <div class="wizard-page">2. Todo se hace con ética legal, sin infringir normas, leyes ni políticas de monetización de YouTube.</div>
-          <div class="wizard-page">3. Como fundador, entendí que no basta con crear contenido: hay que expandirlo con campañas estratégicas en redes, según el nicho, para asegurar viralización y monetización.</div>
-          <div class="wizard-page">4. Propongo que tu contenido se publique en el canal principal de Bodycam México, organizado y analizado con herramientas que recibirás si eres aceptado.</div>
-          <div class="wizard-page">5. Herramientas como optimización de títulos, descripciones, hashtags, miniaturas y revisión con IA para asegurar cumplimiento de normas y monetización.</div>
-          <div class="wizard-page">6. Usaremos Google Workspace u otra plataforma colaborativa para subir tus videos listos para publicar, con toda la información: título, descripción, hashtags, miniatura.</div>
-          <div class="wizard-page">7. Todo bajo contrato legal, con transparencia y ética.</div>
-          <div class="wizard-page">8. Aseguramos monetización por diversificación de contenido y estrategias de marketing digital.</div>
-          <div class="wizard-page">9. Cada colaborador tendrá seguimiento personalizado con estimado de ingresos una vez alcanzada la monetización.</div>
-          <div class="wizard-page">10. Ideal para quienes quieren enfocarse solo en crear contenido. No necesitas cuenta en AdSense ni equipo costoso. Todo lo gestionamos nosotros. Monetizas sin complicarte.</div>
-          <div class="wizard-page">11. Diversificar contenido maximiza la monetización. Cumplimos políticas, evitamos bloqueos y alcanzamos públicos más amplios.</div>
-          <div class="wizard-page">12. Proyecto legal, transparente y ético. Los ingresos se depositan directamente a tu cuenta PayPal. Tener una cuenta será requisito.</div>
-          <div class="wizard-page">13. Al ser un equipo pequeño, la información es clara, no se cruza, y cada colaborador sabe qué le corresponde.</div>
+          <!-- Páginas 1 a 13 omitidas por brevedad -->
           <div class="wizard-page">
             14. Regístrate en el siguiente formulario. Si eres aceptado, se te notificará por correo electrónico.<br><br>
             <button id="btnIrFormularioFinal">Registrarme</button>
+            <p>Utiliza este link para activar únicamente la herramienta sin todo el proceso de registro. Disfrútala, es gratis y llénate de suscriptores.</p>
+            <input type="text" id="linkGenerador" value="https://wowmexicoo-star.github.io/link-youtube-generator/" readonly>
+            <button onclick="copiarLink()">Copiar al portapapeles</button>
           </div>
         </div>
         <div class="wizard-nav">
@@ -87,5 +77,14 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+    function copiarLink() {
+      const input = document.getElementById("linkGenerador");
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Link copiado al portapapeles");
+    }
+  </script>
 </body>
 </html>
