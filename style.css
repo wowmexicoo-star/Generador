@@ -1,0 +1,124 @@
+/* Estilos base */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  text-align: center;
+  padding: 2em;
+  margin: 0;
+}
+
+#app {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Secciones */
+section {
+  margin-bottom: 3em;
+}
+
+.seccion-oculta {
+  display: none;
+}
+
+.seccion-activa {
+  display: block;
+}
+
+/* Botones */
+button {
+  padding: 0.8em 1.2em;
+  margin: 1em 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  background: #00c6ff;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0072ff;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"] {
+  padding: 0.8em;
+  margin: 1em 0;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  background: #fff;
+  color: #000;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+
+/* Generador */
+.generador {
+  margin: 2em 0;
+}
+
+.resultado-oculto {
+  display: none;
+}
+
+.promos {
+  margin-top: 2em;
+}
+
+.promo-btn {
+  display: block;
+  width: 100%;
+  margin: 0.5em 0;
+  padding: 1em;
+  font-size: 1em;
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.promo-btn:hover {
+  background: #e68900;
+}
+
+/* Wizard */
+#wizard-container {
+  background: rgba(0,0,0,0.5);
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+#wizard-content {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.wizard-nav {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Formulario */
+iframe {
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Legal */
+.legal {
+  font-size: 0.8em;
+  color: #ccc;
+  text-align: justify;
+  margin-top: 2em;
+}

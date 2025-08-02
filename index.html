@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bodycam México | Generador de Enlaces y Programa de Colaboradores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- Sección 1: Login con Google y consentimiento -->
+    <section id="seccion-login" class="seccion-activa">
+      <h1>Bienvenido a Bodycam México</h1>
+      <p>Ingresa con tu cuenta de Google para continuar. Tu correo se usará para enviarte novedades, productos y beneficios exclusivos.</p>
+      <div id="g_id_onload"
+           data-client_id="TU_CLIENT_ID_GOOGLE"
+           data-context="signin"
+           data-callback="onGoogleSignIn"
+           data-auto_prompt="false"></div>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-shape="pill"
+           data-theme="filled_blue"
+           data-text="sign_in_with"
+           data-size="large"
+           data-logo_alignment="left">
+      </div>
+      <label>
+        <input type="checkbox" id="consentimiento">
+        Sí, quiero recibir notificaciones de Bodycam México y su equipo.
+      </label>
+      <button id="btnContinuarLogin" disabled>Continuar</button>
+    </section>
+
+    <!-- Sección 2: Suscripción a YouTube -->
+    <section id="seccion-youtube" class="seccion-oculta">
+      <h2>¡Suscríbete a nuestro canal de YouTube!</h2>
+      <p>Haz clic en el botón para suscribirte a <b>Bodycam México</b> y recibe contenido exclusivo.</p>
+      <button id="btnIrYoutube">Suscribirme en YouTube</button>
+      <p>Después de suscribirte, haz clic en continuar.</p>
+      <button id="btnContinuarYoutube">Continuar al Generador</button>
+    </section>
+
+    <!-- Sección 3: Generador de enlaces de suscripción -->
+    <section id="seccion-generador" class="seccion-oculta">
+      <h2>Generador de Enlaces de Suscripción para YouTube</h2>
+      <div class="generador">
+        <input type="text" id="inputUrlCanal" placeholder="Pega aquí el URL de tu canal de YouTube">
+        <button id="btnGenerarEnlace">Generar enlace</button>
+      </div>
+      <div id="resultadoGenerador" class="resultado-oculto">
+        <input type="text" id="outputEnlace" readonly>
+        <button id="btnCopiarEnlace">Copiar al portapapeles</button>
+      </div>
+      <div class="promos">
+        <button id="btnShopify" class="promo-btn">¡Guía definitiva para monetizar en YouTube! 🚀</button>
+        <button id="btnProgramaBodycam" class="promo-btn">¡Quiero unirme al programa Bodycam México!</button>
+      </div>
+    </section>
+
+    <!-- Sección 4: Wizard/Programa Bodycam (páginas 1 a 14) -->
+    <section id="seccion-programa" class="seccion-oculta">
+      <div id="wizard-container">
+        <div id="wizard-content"></div>
+        <div class="wizard-nav">
+          <button id="btnAtrasWizard" disabled>Anterior</button>
+          <button id="btnSiguienteWizard">Siguiente</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 5: Formulario final de registro (Google Forms) -->
+    <section id="seccion-formulario" class="seccion-oculta">
+      <h2>Regístrate al Programa Bodycam México</h2>
+      <iframe src="https://forms.gle/e3VBaPcD3rehuh1s7" width="100%" height="900" style="border:none;"></iframe>
+    </section>
+  </div>
+
+  <script src="Script.js"></script>
+</body>
+</html>
