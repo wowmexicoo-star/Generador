@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  return;
-}
-
-mostrarSeccion("seccion-youtube");
+  mostrarSeccion("seccion-youtube");
 });
 
 btnIrYoutube?.addEventListener("click", () => {
@@ -44,12 +41,17 @@ btnIrFormulario?.addEventListener("click", () => {
   window.open("https://forms.gle/6izFAo3w5L2GU3SN8", "_blank");
 });
 
+// ✅ VALIDACIÓN Y GENERACIÓN DE ENLACE DE SUSCRIPCIÓN
 btnGenerarEnlace?.addEventListener("click", () => {
   const url = inputUrlCanal.value.trim();
-  if (!url.includes("youtube.com")) {
-    alert("Por favor ingresa un URL válido de YouTube.");
+
+  // Validación robusta: acepta canal, usuario o handle
+  const esValido = /^https?:\/\/(www\.)?youtube\.com\/(channel|@|user)\/.+/.test(url);
+  if (!esValido) {
+    alert("Por favor ingresa un URL válido de YouTube (canal, usuario o handle).");
     return;
   }
+
   const enlace = `${url}?sub_confirmation=1`;
   outputEnlace.value = enlace;
   resultadoGenerador.classList.remove("resultado-oculto");
