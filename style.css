@@ -1,89 +1,75 @@
-/* Reset básico */
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
 
-/* Contenedor principal */
 #app {
   max-width: 800px;
-  margin: auto;
-  padding: 2rem;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Secciones */
 section {
-  margin-bottom: 2rem;
-  transition: all 0.3s ease-in-out;
+  margin-bottom: 40px;
 }
 
-/* Ocultar secciones */
 .seccion-oculta {
-  display: none !important;
+  display: none;
 }
 
-/* Botones */
+h1, h2 {
+  color: #0055a5;
+}
+
 button {
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: #007bff;
+  background-color: #0055a5;
   color: white;
-  margin-top: 1rem;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+button:hover {
+  background-color: #003f7f;
 }
 
-/* Inputs */
 input[type="text"] {
   width: 100%;
-  padding: 0.6rem;
-  margin-top: 1rem;
+  padding: 10px;
+  margin-top: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
-/* Promos */
-.promo-btn {
-  background-color: #28a745;
-  margin: 0.5rem 0;
+label {
+  display: block;
+  margin-top: 20px;
 }
 
-/* Wizard */
-#wizard-container {
+.resultado-oculto {
+  display: none;
+}
+
+.wizard-page {
+  display: none;
   background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-#wizard-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  padding: 20px;
+  border-left: 5px solid #0055a5;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .wizard-nav {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
 }
 
-/* Consentimiento */
-label {
-  display: block;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-/* Google Sign-In */
-.g_id_signin {
-  margin-top: 1rem;
+.wizard-nav button {
+  flex: 1;
+  margin: 5px;
 }
