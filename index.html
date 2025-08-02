@@ -9,17 +9,19 @@
 </head>
 <body>
   <div id="app">
-
     <!-- Sección 1: Login con Google y consentimiento -->
     <section id="seccion-login" class="seccion-activa">
       <h1>Bienvenido a Bodycam México</h1>
       <p>Ingresa con tu cuenta de Google para continuar. Tu correo se usará para enviarte novedades, productos y beneficios exclusivos.</p>
+
       <div id="g_id_onload"
            data-client_id="207280589076-phklc1pf5a716q0t5jvo12qhhe92sh1u.apps.googleusercontent.com"
            data-context="signin"
            data-callback="onGoogleSignIn"
            data-auto_prompt="false"
-           data-login_uri="https://wowmexicoo-star.github.io/Generador/"></div>
+           data-login_uri="https://wowmexicoo-star.github.io/Generador/">
+      </div>
+
       <div class="g_id_signin"
            data-type="standard"
            data-shape="pill"
@@ -28,6 +30,7 @@
            data-size="large"
            data-logo_alignment="left">
       </div>
+
       <label>
         <input type="checkbox" id="consentimiento">
         Sí, quiero recibir notificaciones de Bodycam México y su equipo.
@@ -79,7 +82,26 @@
     </section>
   </div>
 
+  <script>
+    function onGoogleSignIn(response) {
+      const credential = response.credential;
+      const payload = JSON.parse(atob(credential.split('.')[1]));
+      const email = payload.email;
+
+      console.log("Correo del usuario:", email);
+
+      const consentimiento = document.getElementById("consentimiento").checked;
+      if (consentimiento) {
+        document.getElementById("btnContinuarLogin").disabled = false;
+        alert("¡Bienvenido, " + email + "!");
+      } else {
+        alert("Por favor acepta recibir notificaciones para continuar.");
+      }
+    }
+  </script>
+
   <script src="Script.js"></script>
 </body>
 </html>
+
 
