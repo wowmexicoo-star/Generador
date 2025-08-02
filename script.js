@@ -3,51 +3,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const consentimiento = document.getElementById("consentimiento");
   const secciones = document.querySelectorAll("section");
   const btnIrYoutube = document.getElementById("btnIrYoutube");
-  const btnContinuarYoutube = document.getElementById("btnContinuarYoutube");
+  const btnContinuarYoutube = document.getElementById("btnContinuarGenerador");
   const btnProgramaBodycam = document.getElementById("btnProgramaBodycam");
   const wizardContent = document.getElementById("wizard-content");
   const btnAtrasWizard = document.getElementById("btnAtrasWizard");
   const btnSiguienteWizard = document.getElementById("btnSiguienteWizard");
-  const btnIrFormulario = document.getElementById("btnIrFormulario");
+  const btnIrFormulario = document.getElementById("btnIrFormularioFinal");
+  const btnShopify = document.getElementById("btnShopify");
+  const inputUrlCanal = document.getElementById("inputUrlCanal");
+  const btnGenerarEnlace = document.getElementById("btnGenerarEnlace");
+  const outputEnlace = document.getElementById("outputEnlace");
+  const btnCopiarEnlace = document.getElementById("btnCopiarEnlace");
+  const resultadoGenerador = document.getElementById("resultadoGenerador");
 
   let paginaActual = 0;
   let correoUsuario = null;
 
-  const wizardPaginas = [
-    "¿Quieres monetizar tu contenido sin complicaciones? Únete a Bodycam México...",
-    "Todo el programa opera bajo ética legal...",
-    "Como fundador, entendí que no basta con crear contenido...",
-    "Proponemos que tu contenido se publique en el canal principal...",
-    "Te damos acceso a herramientas de IA...",
-    "Usaremos Google Workspace u otra plataforma colaborativa...",
-    "Todo está respaldado por contrato legal...",
-    "La monetización se asegura por la diversificación...",
-    "Cada colaborador tendrá seguimiento personalizado...",
-    "Ideal para quienes solo quieren crear...",
-    "Al diversificar el contenido, se maximiza la posibilidad...",
-    "Somos un proyecto legal, transparente y ético...",
-    "Al ser un equipo pequeño, la información es clara...",
-    "Regístrate en el formulario..."
-  ];
+  const wizardPaginas = Array.from(document.querySelectorAll(".wizard-page"));
 
   window.onGoogleSignIn = function (response) {
     const credential = response.credential;
     const payload = JSON.parse(atob(credential.split('.')[1]));
     correoUsuario = payload.email;
-
     console.log("Correo del usuario:", correoUsuario);
     btnContinuarLogin.disabled = false;
 
-    registrarCorreo(correoUsuario);
+    if (consentimiento.checked) {
+      registrarCorreo(correoUsuario, "Sí");
+    } else {
+      registrarCorreo(correoUsuario, "No");
+    }
   };
 
-  function registrarCorreo(email) {
+  function registrarCorreo(email, consentimiento) {
     fetch("https://script.google.com/macros/s/AKfycbwJyHjIEtR2vwRb5-xSiqCaar4AK2oaL6lapolMrNF1PDdpVFnEJ6trWjC2IYwXmPOj/exec", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json"
       },
-      body: "email=" + encodeURIComponent(email)
+      body: JSON.stringify({ correo: email, consentimiento: consentimiento })
     })
     .then(response => response.text())
     .then(data => console.log("Registro:", data))
@@ -64,10 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnIrYoutube?.addEventListener("click", () => {
     window.open("https://www.youtube.com/@BodycamFilesMx?sub_confirmation=1", "_blank");
+    btnContinuarYoutube.classList.remove("seccion-oculta");
   });
 
   btnContinuarYoutube?.addEventListener("click", () => {
     mostrarSeccion("seccion-generador");
+  });
+
+  btnShopify?.addEventListener("click", () => {
+    window.open("https://sv1dsi-qk.myshopify.com/products/guia-secreta-para-monetizar-en-youtube", "_blank");
   });
 
   btnProgramaBodycam?.addEventListener("click", () => {
@@ -79,8 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (paginaActual < wizardPaginas.length - 1) {
       paginaActual++;
       cargarPaginaWizard();
-    } else {
-      mostrarSeccion("seccion-formulario");
     }
   });
 
@@ -95,14 +92,34 @@ document.addEventListener("DOMContentLoaded", () => {
     window.open("https://forms.gle/6izFAo3w5L2GU3SN8", "_blank");
   });
 
+  btnGenerarEnlace?.addEventListener("click", () => {
+    const url = inputUrlCanal.value.trim();
+    if (!url.includes("youtube.com")) {
+      alert("Por favor ingresa un URL válido de YouTube.");
+      return;
+    }
+    const enlace = `${url}?sub_confirmation=1`;
+    outputEnlace.value = enlace;
+    resultadoGenerador.classList.remove("resultado-oculto");
+  });
+
+  btnCopiarEnlace?.addEventListener("click", () => {
+    outputEnlace.select();
+    outputEnlace.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert("Enlace copiado al portapapeles");
+  });
+
   function mostrarSeccion(id) {
     secciones.forEach(sec => sec.classList.add("seccion-oculta"));
     document.getElementById(id)?.classList.remove("seccion-oculta");
   }
 
   function cargarPaginaWizard() {
-    wizardContent.innerHTML = `<p>${wizardPaginas[paginaActual]}</p>`;
+    wizardPaginas.forEach((pagina, index) => {
+      pagina.style.display = index === paginaActual ? "block" : "none";
+    });
     btnAtrasWizard.disabled = paginaActual === 0;
-    btnSiguienteWizard.textContent = paginaActual === wizardPaginas.length - 1 ? "Ir al formulario" : "Siguiente";
+    btnSiguienteWizard.textContent = paginaActual === wizardPaginas.length - 1 ? "Finalizar" : "Siguiente →";
   }
 });
