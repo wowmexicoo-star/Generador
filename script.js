@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  mostrarSeccion("seccion-youtube");
+  mostrarSeccion("seccion-login");
 });
 
 btnIrYoutube?.addEventListener("click", () => {
   window.open("https://www.youtube.com/@BodycamFilesMx?sub_confirmation=1", "_blank");
-  btnContinuarYoutube.classList.remove("seccion-oculta");
+  btnContinuarGenerador.classList.remove("seccion-oculta");
 });
 
-btnContinuarYoutube?.addEventListener("click", () => {
+btnContinuarGenerador?.addEventListener("click", () => {
   mostrarSeccion("seccion-generador");
 });
 
@@ -37,21 +37,18 @@ btnAtrasWizard?.addEventListener("click", () => {
   }
 });
 
-btnIrFormulario?.addEventListener("click", () => {
+btnIrFormularioFinal?.addEventListener("click", () => {
   window.open("https://forms.gle/6izFAo3w5L2GU3SN8", "_blank");
 });
 
 // ✅ VALIDACIÓN Y GENERACIÓN DE ENLACE DE SUSCRIPCIÓN
 btnGenerarEnlace?.addEventListener("click", () => {
   const url = inputUrlCanal.value.trim();
-
-  // Validación robusta: acepta canal, usuario o handle
   const esValido = /^https?:\/\/(www\.)?youtube\.com\/(channel|@|user)\/.+/.test(url);
   if (!esValido) {
     alert("Por favor ingresa un URL válido de YouTube (canal, usuario o handle).");
     return;
   }
-
   const enlace = `${url}?sub_confirmation=1`;
   outputEnlace.value = enlace;
   resultadoGenerador.classList.remove("resultado-oculto");
@@ -76,3 +73,15 @@ function cargarPaginaWizard() {
   btnAtrasWizard.disabled = paginaActual === 0;
   btnSiguienteWizard.textContent = paginaActual === wizardPaginas.length - 1 ? "Finalizar" : "Siguiente →";
 }
+
+// ✅ LOGIN CON GOOGLE: habilita botón sin depender del checkbox
+function onGoogleSignIn(response) {
+  console.log("Usuario autenticado:", response);
+  btnContinuarLogin.disabled = false;
+  mostrarSeccion("seccion-youtube");
+}
+
+// Variables globales necesarias
+const secciones = document.querySelectorAll("section");
+const wizardPaginas = document.querySelectorAll(".wizard-page");
+let paginaActual = 0;
