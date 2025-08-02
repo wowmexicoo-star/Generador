@@ -4,8 +4,75 @@
   <meta charset="UTF-8">
   <title>Bodycam México | Generador de Enlaces y Programa de Colaboradores</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    #app {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    .seccion-oculta {
+      display: none !important;
+    }
+    button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      margin-top: 1rem;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .promo-btn {
+      background-color: #28a745;
+      margin: 0.5rem 0;
+    }
+    #wizard-container {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #wizard-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .wizard-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    .g_id_signin {
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
@@ -92,6 +159,10 @@
       const consentimiento = document.getElementById("consentimiento").checked;
       if (consentimiento) {
         document.getElementById("btnContinuarLogin").disabled = false;
+        document.getElementById("btnContinuarLogin").addEventListener("click", () => {
+          document.getElementById("seccion-login").classList.add("seccion-oculta");
+          document.getElementById("seccion-youtube").classList.remove("seccion-oculta");
+        });
         alert("¡Bienvenido, " + email + "!");
       } else {
         alert("Por favor acepta recibir notificaciones para continuar.");
