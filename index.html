@@ -2,84 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Bodycam México | Generador de Enlaces y Programa de Colaboradores</title>
+  <title>Bodycam México | Generador de Enlaces</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    #app {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    .seccion-oculta {
-      display: none !important;
-    }
-    button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background-color: #007bff;
-      color: white;
-      margin-top: 1rem;
-    }
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 0.6rem;
-      margin-top: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .promo-btn {
-      background-color: #28a745;
-      margin: 0.5rem 0;
-    }
-    #wizard-container {
-      background-color: #fff;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    #wizard-content p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-    .wizard-nav {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-    .g_id_signin {
-      margin-top: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="app">
-    <!-- Sección 1: Login con Google y consentimiento -->
-    <section id="seccion-login" class="seccion-activa">
+    <!-- Sección 1: Login con Google -->
+    <section id="seccion-login">
       <h1>Bienvenido a Bodycam México</h1>
-      <p>Ingresa con tu cuenta de Google para continuar. Tu correo se usará para enviarte novedades, productos y beneficios exclusivos.</p>
+      <p>Ingresa con tu cuenta de Google para continuar.</p>
 
       <div id="g_id_onload"
            data-client_id="207280589076-phklc1pf5a716q0t5jvo12qhhe92sh1u.apps.googleusercontent.com"
@@ -99,80 +32,60 @@
 
       <label>
         <input type="checkbox" id="consentimiento">
-        Sí, quiero recibir notificaciones de Bodycam México y su equipo.
+        Sí, quiero recibir notificaciones de Bodycam México.
       </label>
       <button id="btnContinuarLogin" disabled>Continuar</button>
     </section>
 
     <!-- Sección 2: Suscripción a YouTube -->
     <section id="seccion-youtube" class="seccion-oculta">
-      <h2>¡Suscríbete a nuestro canal de YouTube!</h2>
-      <p>Haz clic en el botón para suscribirte a <b>Bodycam México</b> y recibe contenido exclusivo.</p>
-      <button id="btnIrYoutube">Suscribirme en YouTube</button>
-      <p>Después de suscribirte, haz clic en continuar.</p>
-      <button id="btnContinuarYoutube">Continuar al Generador</button>
+      <h2>¡Suscríbete a nuestro canal!</h2>
+      <button id="btnIrYoutube">Suscribirme para continuar</button>
     </section>
 
-    <!-- Sección 3: Generador de enlaces de suscripción -->
+    <!-- Sección 3: Generador de enlaces -->
     <section id="seccion-generador" class="seccion-oculta">
-      <h2>Generador de Enlaces de Suscripción para YouTube</h2>
-      <div class="generador">
-        <input type="text" id="inputUrlCanal" placeholder="Pega aquí el URL de tu canal de YouTube">
-        <button id="btnGenerarEnlace">Generar enlace</button>
-      </div>
+      <h2>Generador de Enlaces de Suscripción</h2>
+      <input type="text" id="inputUrlCanal" placeholder="Pega el URL de tu canal">
+      <button id="btnGenerarEnlace">Generar enlace</button>
       <div id="resultadoGenerador" class="resultado-oculto">
         <input type="text" id="outputEnlace" readonly>
-        <button id="btnCopiarEnlace">Copiar al portapapeles</button>
+        <button id="btnCopiarEnlace">Copiar</button>
       </div>
-      <div class="promos">
-        <button id="btnShopify" class="promo-btn">¡Guía definitiva para monetizar en YouTube! 🚀</button>
-        <button id="btnProgramaBodycam" class="promo-btn">¡Quiero unirme al programa Bodycam México!</button>
-      </div>
+      <button id="btnShopify">Guía para monetizar 🚀</button>
+      <button id="btnProgramaBodycam">Unirme al programa</button>
     </section>
 
-    <!-- Sección 4: Wizard/Programa Bodycam (páginas 1 a 14) -->
+    <!-- Sección 4: Wizard educativo -->
     <section id="seccion-programa" class="seccion-oculta">
       <div id="wizard-container">
-        <div id="wizard-content"></div>
+        <div id="wizard-content">
+          <div class="wizard-page">1. Buscamos 10 colaboradores que quieran monetizar su contenido uniéndose al programa Bodycam México. Creamos este sistema para ayudarte a expandir tu canal con confianza y estrategia.</div>
+          <div class="wizard-page">2. Todo se hace con ética legal, sin infringir normas, leyes ni políticas de monetización de YouTube.</div>
+          <div class="wizard-page">3. Como fundador, entendí que no basta con crear contenido: hay que expandirlo con campañas estratégicas en redes, según el nicho, para asegurar viralización y monetización.</div>
+          <div class="wizard-page">4. Propongo que tu contenido se publique en el canal principal de Bodycam México, organizado y analizado con herramientas que recibirás si eres aceptado.</div>
+          <div class="wizard-page">5. Herramientas como optimización de títulos, descripciones, hashtags, miniaturas y revisión con IA para asegurar cumplimiento de normas y monetización.</div>
+          <div class="wizard-page">6. Usaremos Google Workspace u otra plataforma colaborativa para subir tus videos listos para publicar, con toda la información: título, descripción, hashtags, miniatura.</div>
+          <div class="wizard-page">7. Todo bajo contrato legal, con transparencia y ética.</div>
+          <div class="wizard-page">8. Aseguramos monetización por diversificación de contenido y estrategias de marketing digital.</div>
+          <div class="wizard-page">9. Cada colaborador tendrá seguimiento personalizado con estimado de ingresos una vez alcanzada la monetización.</div>
+          <div class="wizard-page">10. Ideal para quienes quieren enfocarse solo en crear contenido. No necesitas cuenta en AdSense ni equipo costoso. Todo lo gestionamos nosotros. Monetizas sin complicarte.</div>
+          <div class="wizard-page">11. Diversificar contenido maximiza la monetización. Cumplimos políticas, evitamos bloqueos y alcanzamos públicos más amplios.</div>
+          <div class="wizard-page">12. Proyecto legal, transparente y ético. Los ingresos se depositan directamente a tu cuenta PayPal. Tener una cuenta será requisito.</div>
+          <div class="wizard-page">13. Al ser un equipo pequeño, la información es clara, no se cruza, y cada colaborador sabe qué le corresponde.</div>
+          <div class="wizard-page">
+            14. Regístrate en el siguiente formulario. Si eres aceptado, se te notificará por correo electrónico.<br><br>
+            <button id="btnIrFormularioFinal">Registrarme</button>
+          </div>
+        </div>
         <div class="wizard-nav">
-          <button id="btnAtrasWizard" disabled>Anterior</button>
-          <button id="btnSiguienteWizard">Siguiente</button>
+          <button id="btnAtrasWizard">← Anterior</button>
+          <button id="btnSiguienteWizard">Siguiente →</button>
         </div>
       </div>
     </section>
-
-   <!-- Sección 5: Formulario final de registro (Google Forms) -->
-<section id="seccion-formulario" class="seccion-oculta">
-  <h2>Regístrate al Programa Bodycam México</h2>
-  <p>Haz clic en el botón para abrir el formulario de registro en una nueva pestaña.</p>
-  <button id="btnIrFormulario">Registrarme en el programa</button>
-</section>
-
   </div>
 
-  <script>
-    function onGoogleSignIn(response) {
-      const credential = response.credential;
-      const payload = JSON.parse(atob(credential.split('.')[1]));
-      const email = payload.email;
-
-      console.log("Correo del usuario:", email);
-
-      const consentimiento = document.getElementById("consentimiento").checked;
-      if (consentimiento) {
-        document.getElementById("btnContinuarLogin").disabled = false;
-        document.getElementById("btnContinuarLogin").addEventListener("click", () => {
-          document.getElementById("seccion-login").classList.add("seccion-oculta");
-          document.getElementById("seccion-youtube").classList.remove("seccion-oculta");
-        });
-        alert("¡Bienvenido, " + email + "!");
-      } else {
-        alert("Por favor acepta recibir notificaciones para continuar.");
-      }
-    }
-  </script>
-
-  <script src="Script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
